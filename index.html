@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Mahadev Mane | Motion Graphics Designer & Video Editor</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+      --scroll-offset: 0px;
+    }
+    body {
+      font-family: 'Spline Sans', sans-serif;
+      background-color: #02020a;
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    /* Grid parallax: Moves DOWN when scrolling DOWN */
+    .bg-grid-parallax {
+      position: fixed;
+      inset: -20%;
+      z-index: 0;
+      pointer-events: none;
+      background-size: 50px 50px;
+      background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      transform: translateY(calc(var(--scroll-offset) * 0.12));
+      mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 75%);
+    }
+    .orb {
+      position: fixed;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      filter: blur(160px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5; /* Increased visibility of the mouse gradient orbs as requested */
+      transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6 0%, #d946ef 50%, #f97316 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding-bottom: 0.2em;
+      display: inline-block;
+    }
+    .text-glow-white {
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+    }
+    .name-glow {
+      /* Reduced intensity as requested */
+      text-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(217, 70, 239, 0.25);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    .animate-float-bg {
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes sweep {
+      0% { transform: translateX(-150%) skewX(-25deg); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      100% { transform: translateX(250%) skewX(-25deg); opacity: 0; }
+    }
+    .group:hover .sweep-effect {
+      animation: sweep 1.2s ease-out forwards;
+    }
+    @keyframes wiggle-rotate {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(8deg); }
+      50% { transform: rotate(-8deg); }
+      75% { transform: rotate(4deg); }
+    }
+    .group:hover .animate-wiggle {
+      animation: wiggle-rotate 0.6s ease-in-out infinite;
+    }
+    .radar-pulse::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 2px solid #3b82f6;
+      animation: radar 2.5s linear infinite;
+      opacity: 0;
+    }
+    @keyframes radar {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+    .section-title {
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      text-transform: capitalize;
+    }
+    /* Work item animation for shuffle effect */
+    @keyframes work-pop {
+      0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .work-item-anim {
+      animation: work-pop 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "react/": "https://esm.sh/react@^19.2.3/",
+      "react": "https://esm.sh/react@^19.2.3",
+      "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      document.documentElement.style.setProperty('--mouse-x', x + '%');
+      document.documentElement.style.setProperty('--mouse-y', y + '%');
+    });
+    window.addEventListener('scroll', () => {
+      document.documentElement.style.setProperty('--scroll-offset', window.scrollY + 'px');
+    });
+  </script>
+</body>
+</html>
