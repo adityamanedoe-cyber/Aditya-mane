@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Hero } from './components/Hero';
 import { Navbar } from './components/Navbar';
@@ -12,8 +13,14 @@ import { Footer } from './components/Footer';
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Entrance logic
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 2000);
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
@@ -37,6 +44,7 @@ const App: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
@@ -44,11 +52,26 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-[#02020a]">
+      {/* Preloader / Reload Animation */}
+      {!isLoaded && (
+        <div className="fixed inset-0 z-[100] bg-[#02020a] flex flex-col items-center justify-center p-6 preloader-finish">
+          <div className="relative mb-12">
+            <div className="w-24 h-24 rounded-full border-2 border-white/5 flex items-center justify-center text-white font-black text-2xl animate-scale-reveal">
+              AM
+            </div>
+            <div className="absolute inset-[-10px] rounded-full border border-blue-600/20 animate-spin" style={{ animationDuration: '3s' }}></div>
+          </div>
+          <div className="w-64 h-[2px] bg-white/5 rounded-full overflow-hidden relative">
+            <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 to-fuchsia-600 loader-bar"></div>
+          </div>
+          <p className="mt-6 text-[10px] uppercase tracking-[0.5em] text-white/30 font-black animate-pulse">Initializing Canvas</p>
+        </div>
+      )}
+
       {/* Background System */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="bg-grid-parallax"></div>
         
-        {/* VIBRANT Colorful Gradient Orbs following mouse - Higher visibility requested */}
         <div 
           className="orb bg-blue-600/50" 
           style={{ transform: `translate(${mousePos.x - 350}px, ${mousePos.y - 350}px)` }}
@@ -70,7 +93,6 @@ const App: React.FC = () => {
           }}
         ></div>
 
-        {/* Small Floating Background Icons (50% smaller) */}
         <div className="absolute top-[15%] left-[8%] opacity-5 animate-float-bg">
            <span className="material-symbols-outlined text-[40px]">movie_edit</span>
         </div>
@@ -87,13 +109,15 @@ const App: React.FC = () => {
 
       <Navbar activeSection={activeSection} />
       
-      <main className="relative z-10">
+      <main className={`relative z-10 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <section id="home">
           <Hero />
         </section>
         
         <section id="about" className="py-40">
-          <About />
+          <div className="opacity-0 translate-y-10 transition-all duration-1000 delay-[200ms] animate-reveal">
+            <About />
+          </div>
         </section>
 
         <section id="experience" className="py-40">

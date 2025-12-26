@@ -1,30 +1,31 @@
+
 import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
       <div className="relative z-10 max-w-6xl space-y-12">
-        <div className="glass-card px-6 py-2 rounded-full inline-flex items-center gap-2 border-white/10">
+        <div className="glass-card px-6 py-2 rounded-full inline-flex items-center gap-2 border-white/10 opacity-0 animate-reveal" style={{ animationDelay: '2.1s' }}>
           <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
           <span className="text-[10px] uppercase tracking-[0.3em] text-white/80 font-bold">Showcasing Motion & Editing</span>
         </div>
 
         <div className="space-y-6">
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter text-white leading-[0.9] hover:scale-[1.01] transition-transform duration-700 cursor-default name-glow">
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter text-white leading-[0.9] transition-transform duration-700 cursor-default name-glow opacity-0 animate-scale-reveal" style={{ animationDelay: '2.3s' }}>
             Aditya Mahadev Mane
           </h1>
-          <div className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight flex flex-col md:flex-row items-center justify-center gap-x-4 leading-tight">
+          <div className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight flex flex-col md:flex-row items-center justify-center gap-x-4 leading-tight opacity-0 animate-reveal" style={{ animationDelay: '2.5s' }}>
             <span className="gradient-text">Motion Graphics Designer</span>
             <span className="text-white">& Video Editor</span>
           </div>
         </div>
 
-        <p className="max-w-2xl mx-auto text-white/40 text-xl leading-[1.6] font-light">
+        <p className="max-w-2xl mx-auto text-white/40 text-xl leading-[1.6] font-light opacity-0 animate-reveal" style={{ animationDelay: '2.7s' }}>
           Merging narrative depth with visual precision to create immersive 
           digital experiences that command attention.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 pt-8">
+        <div className="flex flex-wrap items-center justify-center gap-6 pt-8 opacity-0 animate-reveal" style={{ animationDelay: '2.9s' }}>
           <button 
             onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
             className="group relative h-16 px-10 rounded-full bg-blue-600 overflow-hidden transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_50px_rgba(59,130,246,0.7)]"
@@ -43,7 +44,8 @@ export const Hero: React.FC = () => {
       </div>
 
       <div 
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 cursor-pointer hover:opacity-100 opacity-30 transition-opacity"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 cursor-pointer hover:opacity-100 opacity-0 transition-opacity animate-reveal"
+        style={{ animationDelay: '3.2s' }}
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
       >
         <span className="text-[10px] uppercase tracking-[0.4em] text-white font-black">Explore</span>

@@ -22,10 +22,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   ];
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 opacity-0 animate-reveal" style={{ animationDelay: '2.2s' }}>
       <nav className="glass-card rounded-full px-2 py-2 flex items-center gap-1 sm:gap-2 shadow-2xl shadow-blue-900/10 border-white/10">
         <div 
-          className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-fuchsia-600 flex items-center justify-center text-white font-black text-sm mr-2 shrink-0 cursor-pointer"
+          className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-fuchsia-600 flex items-center justify-center text-white font-black text-sm mr-2 shrink-0 cursor-pointer transition-transform hover:scale-110 active:scale-95"
           onClick={() => scrollTo('home')}
         >
           AM

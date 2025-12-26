@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -21,7 +22,6 @@
       line-height: 1.5;
     }
 
-    /* Force Material Symbols to render correctly */
     .material-symbols-outlined {
       font-family: 'Material Symbols Outlined';
       font-weight: normal;
@@ -38,7 +38,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Grid parallax: Moves DOWN when scrolling DOWN */
     .bg-grid-parallax {
       position: fixed;
       inset: -20%;
@@ -83,6 +82,41 @@
     .name-glow {
       text-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(217, 70, 239, 0.25);
     }
+
+    /* Entrance Animations */
+    @keyframes reveal-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-reveal {
+      animation: reveal-up 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    @keyframes scale-reveal {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .animate-scale-reveal {
+      animation: scale-reveal 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    /* Preloader Styles */
+    @keyframes bar-grow {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; }
+    }
+    .loader-bar {
+      animation: bar-grow 1.5s ease-in-out forwards;
+    }
+    @keyframes fade-out {
+      to { opacity: 0; visibility: hidden; }
+    }
+    .preloader-finish {
+      animation: fade-out 0.8s ease-in-out forwards;
+      animation-delay: 1.6s;
+    }
+
     @keyframes float {
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-15px) rotate(5deg); }
