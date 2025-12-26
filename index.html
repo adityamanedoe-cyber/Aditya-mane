@@ -6,7 +6,7 @@
   <title>Aditya Mahadev Mane | Motion Graphics Designer & Video Editor</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <style>
     :root {
       --mouse-x: 50%;
@@ -20,6 +20,24 @@
       overflow-x: hidden;
       line-height: 1.5;
     }
+
+    /* Force Material Symbols to render correctly */
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
     /* Grid parallax: Moves DOWN when scrolling DOWN */
     .bg-grid-parallax {
       position: fixed;
@@ -42,7 +60,7 @@
       filter: blur(160px);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.5; /* Increased visibility of the mouse gradient orbs as requested */
+      opacity: 0.5;
       transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .glass-card {
@@ -63,7 +81,6 @@
       text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
     }
     .name-glow {
-      /* Reduced intensity as requested */
       text-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(217, 70, 239, 0.25);
     }
     @keyframes float {
@@ -109,7 +126,6 @@
       line-height: 1.1;
       text-transform: capitalize;
     }
-    /* Work item animation for shuffle effect */
     @keyframes work-pop {
       0% { opacity: 0; transform: scale(0.9) translateY(10px); }
       100% { opacity: 1; transform: scale(1) translateY(0); }
@@ -120,18 +136,21 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
   </style>
-  <script type="importmap">
-  {
-    "imports": {
-      "react/": "https://esm.sh/react@^19.2.3/",
-      "react": "https://esm.sh/react@^19.2.3",
-      "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-    }
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
-  </script>
+}
+</script>
 </head>
 <body>
   <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
   <script>
     document.addEventListener('mousemove', (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
