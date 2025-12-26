@@ -1,6 +1,9 @@
+
 import React from 'react';
 
 export const About: React.FC = () => {
+  const cvLink = "https://drive.google.com/drive/folders/1ChkJIu4mHz2RVk4z4UoHUvmKtXf0aiAd?usp=drive_link";
+
   return (
     <div className="max-w-[1280px] mx-auto px-6 grid lg:grid-cols-12 gap-16 lg:gap-24">
       {/* Left Column: Identity */}
@@ -11,15 +14,23 @@ export const About: React.FC = () => {
           <div className="relative flex flex-col items-center text-center">
             <div className="relative mb-10 transition-transform duration-700 group-hover:scale-105">
               <div className="absolute inset-[-6px] rounded-full bg-gradient-to-r from-blue-600 via-fuchsia-600 to-orange-500 animate-spin opacity-40 blur-[4px]" style={{ animationDuration: '10s' }}></div>
-              <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-[#050510]">
+              <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-[#050510] bg-[#0a0a1a]">
+                {/* 
+                   ARTIST OUTLINE ILLUSTRATION:
+                   Minimalist line-art style illustration to represent an artistic identity.
+                */}
                 <img 
-                  src="https://lh3.googleusercontent.com/d/1_HnC2N-QeGfT3747L_tU7m_e_l7r_2O2" 
-                  alt="Aditya Mahadev Mane" 
-                  className="w-full h-full object-cover"
+                  src="https://images.unsplash.com/photo-1605496036006-fa36378ca4ab?q=80&w=800&auto=format&fit=crop" 
+                  alt="Minimalist Artist Outline" 
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  style={{ filter: 'brightness(1.2) contrast(1.1)' }}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop";
+                  }}
                 />
               </div>
               <div className="absolute bottom-3 right-3 bg-[#02020a] rounded-full p-2 border border-white/10 shadow-lg">
-                <span className="material-symbols-outlined text-blue-500 text-xl">verified</span>
+                <span className="material-symbols-outlined text-blue-500 text-xl font-variation-fill">palette</span>
               </div>
             </div>
 
@@ -114,10 +125,15 @@ export const About: React.FC = () => {
           ))}
         </div>
 
-        <button className="flex items-center gap-4 px-10 py-5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black transition-all ml-12 shadow-2xl hover:scale-105 active:scale-95">
+        <a 
+          href={cvLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-black transition-all ml-12 shadow-2xl hover:scale-105 active:scale-95 cursor-pointer"
+        >
           <span className="material-symbols-outlined">description</span>
           <span>Download CV</span>
-        </button>
+        </a>
       </div>
     </div>
   );

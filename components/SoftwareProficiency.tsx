@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 
 export const SoftwareProficiency: React.FC = () => {
@@ -45,8 +46,8 @@ export const SoftwareProficiency: React.FC = () => {
       name: 'Freepik AI', 
       level: 'Proficient', 
       percent: 85, 
-      color: 'from-blue-500 to-blue-700', 
-      icon: 'https://freepik.cdnpk.net/img/logos/freepik-f.svg' 
+      color: 'from-[#2e63c2] to-[#1e4b91]', 
+      icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Freepik_logo.svg/512px-Freepik_logo.svg.png' 
     }
   ];
 
@@ -63,11 +64,19 @@ export const SoftwareProficiency: React.FC = () => {
             {/* CARD-WIDE Hover Sweep Effect */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-[-25deg] translate-x-[-200%] sweep-effect pointer-events-none z-20"></div>
 
-            <div className="w-24 h-24 rounded-2xl bg-black/40 border border-white/10 p-3 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-700 shadow-2xl relative z-10 overflow-hidden">
+            <div className="w-24 h-24 rounded-2xl bg-black/40 border border-white/10 p-4 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-700 shadow-2xl relative z-10 overflow-hidden">
               <img 
                 src={tool.icon} 
                 alt={tool.name} 
-                className={`w-full h-full object-contain ${tool.name === 'Freepik AI' ? 'scale-110' : ''}`} 
+                className="w-full h-full object-contain"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (tool.name === 'Freepik AI') {
+                    target.src = 'https://www.vectorlogo.zone/logos/freepik/freepik-tile.svg';
+                  } else {
+                    target.src = 'https://www.svgrepo.com/show/443198/app-adobe.svg';
+                  }
+                }}
               />
             </div>
 
