@@ -47,7 +47,7 @@ export const SoftwareProficiency: React.FC = () => {
       level: 'Proficient', 
       percent: 85, 
       color: 'from-[#2e63c2] to-[#1e4b91]', 
-      icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Freepik_logo.svg/512px-Freepik_logo.svg.png' 
+      icon: 'F' // Use character instead of URL
     }
   ];
 
@@ -65,19 +65,19 @@ export const SoftwareProficiency: React.FC = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-[-25deg] translate-x-[-200%] sweep-effect pointer-events-none z-20"></div>
 
             <div className="w-24 h-24 rounded-2xl bg-black/40 border border-white/10 p-4 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-700 shadow-2xl relative z-10 overflow-hidden">
-              <img 
-                src={tool.icon} 
-                alt={tool.name} 
-                className="w-full h-full object-contain"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (tool.name === 'Freepik AI') {
-                    target.src = 'https://www.vectorlogo.zone/logos/freepik/freepik-tile.svg';
-                  } else {
+              {tool.name === 'Freepik AI' ? (
+                <span className="text-6xl font-black text-white select-none name-glow">F</span>
+              ) : (
+                <img 
+                  src={tool.icon} 
+                  alt={tool.name} 
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
                     target.src = 'https://www.svgrepo.com/show/443198/app-adobe.svg';
-                  }
-                }}
-              />
+                  }}
+                />
+              )}
             </div>
 
             <div className="flex-1 w-full space-y-6 relative z-10">

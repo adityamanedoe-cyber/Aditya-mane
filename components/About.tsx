@@ -14,23 +14,20 @@ export const About: React.FC = () => {
           <div className="relative flex flex-col items-center text-center">
             <div className="relative mb-10 transition-transform duration-700 group-hover:scale-105">
               <div className="absolute inset-[-6px] rounded-full bg-gradient-to-r from-blue-600 via-fuchsia-600 to-orange-500 animate-spin opacity-40 blur-[4px]" style={{ animationDuration: '10s' }}></div>
-              <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-[#050510] bg-[#0a0a1a]">
+              <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-[#050510] bg-[#02020a] flex items-center justify-center shadow-2xl">
                 {/* 
-                   ARTIST OUTLINE ILLUSTRATION:
-                   Minimalist line-art style illustration to represent an artistic identity.
+                   TYPOGRAPHIC IDENTITY:
+                   Replacing the image with "AMM" initials as requested.
+                   Using a bold, high-contrast gradient style to match the portfolio's aesthetics.
                 */}
-                <img 
-                  src="https://images.unsplash.com/photo-1605496036006-fa36378ca4ab?q=80&w=800&auto=format&fit=crop" 
-                  alt="Minimalist Artist Outline" 
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-                  style={{ filter: 'brightness(1.2) contrast(1.1)' }}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop";
-                  }}
-                />
+                <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-white/10 to-transparent">
+                  <span className="text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white/90 to-white/40 select-none name-glow">
+                    AMM
+                  </span>
+                </div>
               </div>
               <div className="absolute bottom-3 right-3 bg-[#02020a] rounded-full p-2 border border-white/10 shadow-lg">
-                <span className="material-symbols-outlined text-blue-500 text-xl font-variation-fill">palette</span>
+                <span className="material-symbols-outlined text-blue-500 text-xl font-variation-fill">animation</span>
               </div>
             </div>
 
