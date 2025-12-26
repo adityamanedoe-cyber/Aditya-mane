@@ -1,6 +1,34 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 
 export const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const { name, email, subject, message } = formData;
+    
+    // Constructing mailto link to ensure details reach adityammane2003@gmail.com
+    const mailtoLink = `mailto:adityammane2003@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(
+      `Name: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `Message:\n${message}`
+    )}`;
+    
+    window.location.href = mailtoLink;
+  };
+
   return (
     <div className="max-w-[1280px] mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -52,26 +80,60 @@ export const Contact: React.FC = () => {
 
         <div className="glass-card rounded-[3rem] p-10 lg:p-12 relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-[60px] pointer-events-none"></div>
-          <form className="space-y-6 relative z-10">
+          <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase text-white/40 tracking-widest ml-4">Name</label>
-                <input type="text" placeholder="Your name" className="w-full bg-black/40 border-white/5 rounded-full px-8 py-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none" />
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your name" 
+                  required
+                  className="w-full bg-black/40 border-white/5 rounded-full px-8 py-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none" 
+                />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase text-white/40 tracking-widest ml-4">Email</label>
-                <input type="email" placeholder="email@example.com" className="w-full bg-black/40 border-white/5 rounded-full px-8 py-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none" />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="email@example.com" 
+                  required
+                  className="w-full bg-black/40 border-white/5 rounded-full px-8 py-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none" 
+                />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-xs font-black uppercase text-white/40 tracking-widest ml-4">Subject</label>
-              <input type="text" placeholder="Project inquiry..." className="w-full bg-black/40 border-white/5 rounded-full px-8 py-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none" />
+              <input 
+                type="text" 
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Project inquiry..." 
+                className="w-full bg-black/40 border-white/5 rounded-full px-8 py-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none" 
+              />
             </div>
             <div className="space-y-2">
               <label className="text-xs font-black uppercase text-white/40 tracking-widest ml-4">Message</label>
-              <textarea rows={4} placeholder="Tell me about your project..." className="w-full bg-black/40 border-white/5 rounded-[2rem] px-8 py-6 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none resize-none"></textarea>
+              <textarea 
+                rows={4} 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell me about your project..." 
+                required
+                className="w-full bg-black/40 border-white/5 rounded-[2rem] px-8 py-6 focus:ring-2 focus:ring-blue-600 focus:border-transparent text-white outline-none resize-none"
+              ></textarea>
             </div>
-            <button className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white font-black text-lg rounded-full shadow-[0_0_30px_rgba(19,55,236,0.4)] transition-all flex items-center justify-center gap-3 group hover:scale-[1.02] active:scale-95">
+            <button 
+              type="submit"
+              className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white font-black text-lg rounded-full shadow-[0_0_30px_rgba(19,55,236,0.4)] transition-all flex items-center justify-center gap-3 group hover:scale-[1.02] active:scale-95"
+            >
               <span>Send Message</span>
               <span className="material-symbols-outlined group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">send</span>
             </button>
