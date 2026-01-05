@@ -47,7 +47,7 @@ export const SoftwareProficiency: React.FC = () => {
       level: 'Proficient', 
       percent: 85, 
       color: 'from-[#2e63c2] to-[#1e4b91]', 
-      icon: 'F' // Use character instead of URL
+      icon: 'freepik' // Identifier for the SVG
     }
   ];
 
@@ -66,7 +66,15 @@ export const SoftwareProficiency: React.FC = () => {
 
             <div className="w-24 h-24 rounded-2xl bg-black/40 border border-white/10 p-4 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-700 shadow-2xl relative z-10 overflow-hidden">
               {tool.name === 'Freepik AI' ? (
-                <span className="text-6xl font-black text-white select-none name-glow">F</span>
+                <svg viewBox="0 0 1092 1092" className="w-full h-full object-contain" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="1092" height="1092" rx="200" fill="#4285F4"/>
+                  <g fill="#FFFFFF">
+                    <rect x="205" y="205" width="682" height="510" rx="30"/>
+                    <rect x="478" y="375" width="409" height="240" rx="30"/>
+                    <rect x="478" y="615" width="409" height="100" rx="30"/>
+                    <rect x="205" y="785" width="273" height="102" rx="30"/>
+                  </g>
+                </svg>
               ) : (
                 <img 
                   src={tool.icon} 
