@@ -16,26 +16,24 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const navItems = [
     { label: 'Home', id: 'home' },
     { label: 'About', id: 'about' },
-    { label: 'Experience', id: 'experience' },
-    { label: 'Skills', id: 'skills' },
     { label: 'Work', id: 'work' },
   ];
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 opacity-0 animate-reveal" style={{ animationDelay: '2.2s' }}>
-      <nav className="glass-card rounded-full px-2 py-2 flex items-center gap-1 sm:gap-2 shadow-2xl shadow-blue-900/10 border-white/10">
+    <header className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 opacity-0 animate-reveal" style={{ animationDelay: '2.2s' }}>
+      <nav className="glass-card rounded-full px-1.5 py-1.5 flex items-center gap-1 shadow-2xl border-white/10 w-full max-w-fit">
         <div 
-          className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-fuchsia-600 flex items-center justify-center text-white font-black text-sm mr-2 shrink-0 cursor-pointer transition-transform hover:scale-110 active:scale-95"
+          className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-blue-600 to-fuchsia-600 flex items-center justify-center text-white font-black text-xs md:text-sm shrink-0 cursor-pointer transition-transform active:scale-95"
           onClick={() => scrollTo('home')}
         >
           AM
         </div>
-        <div className="hidden sm:flex items-center gap-1">
+        <div className="flex items-center gap-0.5 sm:gap-1">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className={`px-5 py-2 text-sm font-medium rounded-full transition-all ${
+              className={`px-3 md:px-5 py-2 text-[10px] md:text-sm font-medium rounded-full transition-all ${
                 activeSection === item.id 
                   ? 'bg-white/10 text-white' 
                   : 'text-white/60 hover:text-white hover:bg-white/5'
@@ -47,10 +45,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         </div>
         <button 
           onClick={() => scrollTo('contact')}
-          className="ml-1 sm:ml-2 px-6 py-2.5 bg-white text-black hover:bg-gray-100 rounded-full text-sm font-bold transition-transform hover:scale-105 active:scale-95 flex items-center gap-2"
+          className="ml-1 px-4 md:px-6 py-2 md:py-2.5 bg-white text-black rounded-full text-[10px] md:text-sm font-bold transition-transform active:scale-95 flex items-center gap-1.5 md:gap-2"
         >
-          <span>Contact</span>
-          <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
+          <span>Hire</span>
+          <span className="material-symbols-outlined text-[14px] md:text-[18px]">arrow_outward</span>
         </button>
       </nav>
     </header>

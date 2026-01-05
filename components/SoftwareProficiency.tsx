@@ -47,7 +47,7 @@ export const SoftwareProficiency: React.FC = () => {
       level: 'Proficient', 
       percent: 85, 
       color: 'from-[#2e63c2] to-[#1e4b91]', 
-      icon: 'F' // Use character instead of URL
+      icon: 'freepik' // Identifier for the SVG
     }
   ];
 
@@ -66,7 +66,10 @@ export const SoftwareProficiency: React.FC = () => {
 
             <div className="w-24 h-24 rounded-2xl bg-black/40 border border-white/10 p-4 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-700 shadow-2xl relative z-10 overflow-hidden">
               {tool.name === 'Freepik AI' ? (
-                <span className="text-6xl font-black text-white select-none name-glow">F</span>
+                <svg viewBox="0 0 500 500" className="w-full h-full object-contain" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#336AEA" d="M475,390.625C475,437.224,437.224,475,390.625,475h-281.25C62.776,475,25,437.224,25,390.625 v-281.25C25,62.776,62.776,25,109.375,25h281.25C437.224,25,475,62.776,475,109.375V390.625z"/>
+                  <path fill="#FFFFFF" d="M221.875,381.836c0,4.854-3.935,8.789-8.789,8.789h-94.922c-4.854,0-8.789-3.935-8.789-8.789 v-24.609c0-4.854,3.935-8.789,8.789-8.789h94.922c4.854,0,8.789,3.935,8.789,8.789V381.836z M381.836,179.689 c4.854,0,8.789-3.936,8.789-8.789v-52.736c0-4.854-3.935-8.789-8.789-8.789l-263.672-0.001c-4.854,0-8.789,3.935-8.789,8.789 v193.361c0,4.854,3.935,8.789,8.789,8.789h94.922c4.854,0,8.789-3.935,8.789-8.789v-24.609c0-4.854,3.935-8.789,8.789-8.789 h151.172c4.854,0,8.789-3.935,8.789-8.789v-52.733c0-4.854-3.935-8.789-8.789-8.789H230.664c-4.854,0-8.789-3.936-8.789-8.789 v-10.547c0-4.854,3.935-8.789,8.789-8.789H381.836z"/>
+                </svg>
               ) : (
                 <img 
                   src={tool.icon} 
