@@ -115,19 +115,11 @@ export const WorkGrid: React.FC = () => {
           rel="noopener noreferrer"
           className="group relative inline-flex items-center gap-6 px-14 py-6 rounded-full overflow-hidden transition-all hover:scale-[1.05] active:scale-95 border border-white/20 shadow-[0_0_60px_rgba(59,130,246,0.3)]"
         >
-          {/* Behance Button Glow - Matching Experience Card Glow */}
+          {/* Behance Button Glow */}
           <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-fuchsia-600 to-orange-500 opacity-0 group-hover:opacity-50 blur-2xl transition-all duration-700"></div>
           
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-fuchsia-600 to-orange-500 opacity-90 group-hover:opacity-100 transition-opacity"></div>
           
-          {/* Behance Logo Image - Official Bē Logo */}
-          <div className="relative z-10 w-10 h-10 overflow-hidden flex items-center justify-center">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Behance_logo.svg" 
-              alt="Behance" 
-              className="w-full h-full object-contain brightness-0 invert"
-            />
-          </div>
           <span className="text-xl font-black text-white relative z-10">View Portfolio on Behance</span>
           <span className="material-symbols-outlined text-white relative z-10 group-hover:translate-x-1 transition-transform">arrow_outward</span>
         </a>
